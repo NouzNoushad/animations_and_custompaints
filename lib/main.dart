@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animations/implicit_animation.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
-      home: const HomePage(),
+      home: const ImplicitAnimations(),
     );
   }
 }
@@ -110,7 +111,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     });
 
     return Scaffold(
-      backgroundColor: Colors.black,
       body: SafeArea(
         child: Center(
           child: AnimatedBuilder(
