@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_animations/animated_prompt.dart';
+import 'package:flutter_animations/loading_animations/ball_scale.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
-      home: const AnimatedPrompt(),
+      home: const BallScale(),
     );
   }
 }
