@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animations/coffee_animation.dart';
 import 'package:flutter_animations/loading_animations/ball_scale.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
-      home: const BallScale(),
+      home: const CoffeeAnimation(),
     );
   }
 }
