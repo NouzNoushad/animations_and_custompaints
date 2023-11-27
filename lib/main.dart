@@ -1,9 +1,13 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animations/card_animation.dart';
+import 'package:flutter_animations/wave_animation.dart';
+import 'package:flutter_animations/clippers/ticket_clippers.dart';
 import 'package:flutter_animations/coffee_animation.dart';
 import 'package:flutter_animations/loading_animations/ball_scale.dart';
 import 'package:flutter_animations/treat_animation.dart';
+import 'package:flutter_animations/water_animation.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,9 +19,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark(),
+      theme:
+          ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue)),
       debugShowCheckedModeBanner: false,
-      home: const TreatAnimation(),
+      home: const WaveAnimation(),
     );
   }
 }
