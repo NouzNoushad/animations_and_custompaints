@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animations/card_animation.dart';
+import 'package:flutter_animations/chat_audio_record_animation.dart';
 import 'package:flutter_animations/wave_animation.dart';
 import 'package:flutter_animations/clippers/ticket_clippers.dart';
 import 'package:flutter_animations/coffee_animation.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme:
           ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue)),
       debugShowCheckedModeBanner: false,
-      home: const WaveAnimation(),
+      home: const ChatAudioRecordAnimation(),
     );
   }
 }

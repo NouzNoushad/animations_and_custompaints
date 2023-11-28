@@ -87,7 +87,7 @@ class _WaveAnimationState extends State<WaveAnimation>
               child: Text('$counter%',
                   style: const TextStyle(
                     fontSize: 120,
-                    color: Colors.white70,
+                    color: Colors.white,
                     fontWeight: FontWeight.bold,
                   )),
             ),
