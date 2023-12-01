@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animations/coffee_animation.dart';
+import 'package:flutter_animations/animations/coffee_animation.dart';
 
 class TreatItem {
   final String id;
