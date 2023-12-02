@@ -1,5 +1,8 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter_animations/custom_paint/clock_design.dart';
+import 'package:flutter_animations/custom_paint/custom_clock.dart';
+import 'package:flutter_animations/custom_paint/custom_slider.dart';
 import 'package:flutter_animations/custom_paint/thermometer.dart';
 import 'package:flutter_animations/render_object/speedometer.dart';
 
@@ -16,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme:
           ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue)),
       debugShowCheckedModeBanner: false,
-      home: const ThermometerDesign(),
+      home: const CustomClockDesign(),
     );
   }
 }
