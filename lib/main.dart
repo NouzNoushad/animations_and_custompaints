@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter_animations/animations/ball_animation.dart';
 import 'package:flutter_animations/custom_paint/clock_design.dart';
 import 'package:flutter_animations/custom_paint/custom_clock.dart';
 import 'package:flutter_animations/custom_paint/custom_slider.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme:
           ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue)),
       debugShowCheckedModeBanner: false,
-      home: const CustomClockDesign(),
+      home: const BallBouncingAnimation(),
     );
   }
 }

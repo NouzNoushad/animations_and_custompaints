@@ -14,6 +14,7 @@ class _CustomClockDesignState extends State<CustomClockDesign> {
   @override
   void initState() {
     Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (mounted) return;
       setState(() {});
     });
     super.initState();
