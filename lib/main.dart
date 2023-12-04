@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme:
           ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue)),
       debugShowCheckedModeBanner: false,
-      home: const FABAnimation(),
+      home: const BirdClockPendulum(),
     );
   }
 }

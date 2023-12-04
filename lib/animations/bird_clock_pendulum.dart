@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class BirdClockPendulum extends StatefulWidget {
@@ -11,18 +13,23 @@ class _BirdClockPendulumState extends State<BirdClockPendulum>
     with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> pendulumAnimation;
+  late Animation<double> doorAnimation;
 
   @override
   void initState() {
     controller = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 1500));
     pendulumAnimation = TweenSequence<double>([
-      TweenSequenceItem(tween: Tween<double>(begin: 0, end: 0.5), weight: 1),
-      TweenSequenceItem(tween: Tween<double>(begin: 0.5, end: 0), weight: 1),
-      TweenSequenceItem(tween: Tween<double>(begin: 0, end: -0.5), weight: 1),
-      TweenSequenceItem(tween: Tween<double>(begin: -0.5, end: 0), weight: 1),
+      TweenSequenceItem(tween: Tween<double>(begin: 0, end: 0.6), weight: 1),
+      TweenSequenceItem(tween: Tween<double>(begin: 0.6, end: 0), weight: 1),
+      TweenSequenceItem(tween: Tween<double>(begin: 0, end: -0.6), weight: 1),
+      TweenSequenceItem(tween: Tween<double>(begin: -0.6, end: 0), weight: 1),
     ]).animate(CurvedAnimation(parent: controller, curve: Curves.linear));
 
+    doorAnimation = TweenSequence([
+      TweenSequenceItem(tween: Tween<double>(begin: 0, end: pi), weight: 1),
+      TweenSequenceItem(tween: Tween<double>(begin: pi, end: 0), weight: 1),
+    ]).animate(CurvedAnimation(parent: controller, curve: Curves.linear));
     controller.addListener(() {
       setState(() {});
     });
@@ -65,6 +72,42 @@ class _BirdClockPendulumState extends State<BirdClockPendulum>
             // color: Colors.yellow,
             child: CustomPaint(
               painter: BirdHouse(),
+              child: AnimatedBuilder(
+                  animation: controller,
+                  builder: (context, child) {
+                    return Align(
+                      alignment: const Alignment(0.0, 0.4),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Transform(
+                            alignment: Alignment.centerLeft,
+                            transform: Matrix4.rotationY(doorAnimation.value),
+                            child: CustomPaint(
+                              painter: LeftDoor(),
+                              child: Container(
+                                height: 100,
+                                width: 45,
+                                color: Colors.transparent,
+                              ),
+                            ),
+                          ),
+                          Transform(
+                            alignment: Alignment.centerRight,
+                            transform: Matrix4.rotationY(doorAnimation.value),
+                            child: CustomPaint(
+                              painter: RightDoor(),
+                              child: Container(
+                                height: 100,
+                                width: 45,
+                                color: Colors.transparent,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }),
             ),
           ),
           SizedBox(
@@ -86,6 +129,64 @@ class _BirdClockPendulumState extends State<BirdClockPendulum>
         ],
       )),
     );
+  }
+}
+
+class RightDoor extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    var h = size.height;
+    var w = size.width;
+    var path1 = Path()
+      ..moveTo(0, 0)
+      ..arcToPoint(
+        Offset(0, h),
+        radius: const Radius.circular(10),
+        clockwise: true,
+      )
+      ..lineTo(0, 0)
+      ..close();
+
+    canvas.drawPath(
+        path1,
+        Paint()
+          ..color = Colors.black
+          ..strokeWidth = 2
+          ..style = PaintingStyle.stroke);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
+  }
+}
+
+class LeftDoor extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    var h = size.height;
+    var w = size.width;
+    var path1 = Path()
+      ..moveTo(w, 0)
+      ..arcToPoint(
+        Offset(w, h),
+        radius: const Radius.circular(10),
+        clockwise: false,
+      )
+      ..lineTo(w, h)
+      ..close();
+
+    canvas.drawPath(
+        path1,
+        Paint()
+          ..color = Colors.black
+          ..strokeWidth = 2
+          ..style = PaintingStyle.stroke);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
   }
 }
 
