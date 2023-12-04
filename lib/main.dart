@@ -4,6 +4,7 @@ import 'package:flutter_animations/animations/ball_animation.dart';
 import 'package:flutter_animations/animations/bird_clock.dart';
 import 'package:flutter_animations/animations/bird_clock_pendulum.dart';
 import 'package:flutter_animations/animations/fab_animation.dart';
+import 'package:flutter_animations/animations/page_transition.dart';
 import 'package:flutter_animations/custom_paint/apple.dart';
 import 'package:flutter_animations/custom_paint/clock_design.dart';
 import 'package:flutter_animations/custom_paint/custom_clock.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       theme:
           ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue)),
       debugShowCheckedModeBanner: false,
-      home: const BirdClockPendulum(),
+      home: const PageTransition(),
     );
   }
 }
