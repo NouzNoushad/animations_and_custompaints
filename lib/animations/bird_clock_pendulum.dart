@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
 
-class BirdClock extends StatefulWidget {
-  const BirdClock({super.key});
+class BirdClockPendulum extends StatefulWidget {
+  const BirdClockPendulum({super.key});
 
   @override
-  State<BirdClock> createState() => _BirdClockState();
+  State<BirdClockPendulum> createState() => _BirdClockPendulumState();
 }
 
-class _BirdClockState extends State<BirdClock>
+class _BirdClockPendulumState extends State<BirdClockPendulum>
     with SingleTickerProviderStateMixin {
   late AnimationController controller;
-  late Animation<double> stretchAnimation;
-  late Animation<double> stretch2Animation;
+  late Animation<double> pendulumAnimation;
 
   @override
   void initState() {
     controller = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 1500));
-    stretchAnimation = Tween<double>(begin: 0, end: 200)
-        .animate(CurvedAnimation(parent: controller, curve: Curves.bounceOut));
-    stretch2Animation = Tween<double>(begin: 0, end: 200).animate(
-        CurvedAnimation(
-            parent: controller,
-            curve: const Interval(0.3, 1, curve: Curves.bounceOut)));
+    pendulumAnimation = TweenSequence<double>([
+      TweenSequenceItem(tween: Tween<double>(begin: 0, end: 0.5), weight: 1),
+      TweenSequenceItem(tween: Tween<double>(begin: 0.5, end: 0), weight: 1),
+      TweenSequenceItem(tween: Tween<double>(begin: 0, end: -0.5), weight: 1),
+      TweenSequenceItem(tween: Tween<double>(begin: -0.5, end: 0), weight: 1),
+    ]).animate(CurvedAnimation(parent: controller, curve: Curves.linear));
+
     controller.addListener(() {
       setState(() {});
     });
@@ -36,11 +36,9 @@ class _BirdClockState extends State<BirdClock>
   }
 
   bool isStarted = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       floatingActionButton: FloatingActionButton.extended(
           backgroundColor: Colors.white,
           onPressed: () {
@@ -76,10 +74,12 @@ class _BirdClockState extends State<BirdClock>
             child: AnimatedBuilder(
                 animation: controller,
                 builder: (context, child) {
-                  return CustomPaint(
-                    painter: Pendulum(
-                        stretchHeight: stretchAnimation.value,
-                        stretch2Height: stretch2Animation.value),
+                  return Transform(
+                    alignment: Alignment.topCenter,
+                    transform: Matrix4.rotationZ(pendulumAnimation.value),
+                    child: CustomPaint(
+                      painter: Pendulum(),
+                    ),
                   );
                 }),
           ),
@@ -90,15 +90,9 @@ class _BirdClockState extends State<BirdClock>
 }
 
 class Pendulum extends CustomPainter {
-  const Pendulum({
-    required this.stretchHeight,
-    required this.stretch2Height,
-  });
-  final double stretchHeight;
-  final double stretch2Height;
   @override
   void paint(Canvas canvas, Size size) {
-    // var h = size.height;
+    var h = size.height;
     var w = size.width;
 
     var paint = Paint()
@@ -107,20 +101,12 @@ class Pendulum extends CustomPainter {
       ..style = PaintingStyle.stroke;
 
     var path = Path()
-      ..moveTo(w * 0.4, 0)
-      ..lineTo(w * 0.4, stretchHeight)
+      ..moveTo(w * 0.5, 0)
+      ..lineTo(w * 0.5, h * 0.8)
       ..close();
 
     canvas.drawPath(path, paint);
-    canvas.drawCircle(Offset(w * 0.4, stretchHeight + 8), 10, paint);
-
-    var path2 = Path()
-      ..moveTo(w * 0.6, 0)
-      ..lineTo(w * 0.6, stretch2Height)
-      ..close();
-
-    canvas.drawPath(path2, paint);
-    canvas.drawCircle(Offset(w * 0.6, stretch2Height + 8), 10, paint);
+    canvas.drawCircle(Offset(w * 0.5, h * 0.85), 10, paint);
   }
 
   @override
