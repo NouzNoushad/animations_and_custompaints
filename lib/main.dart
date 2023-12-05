@@ -9,8 +9,10 @@ import 'package:flutter_animations/custom_paint/apple.dart';
 import 'package:flutter_animations/custom_paint/clock_design.dart';
 import 'package:flutter_animations/custom_paint/custom_clock.dart';
 import 'package:flutter_animations/custom_paint/custom_slider.dart';
+import 'package:flutter_animations/custom_paint/doreamon.dart';
 import 'package:flutter_animations/custom_paint/thermometer.dart';
 import 'package:flutter_animations/render_object/speedometer.dart';
+import 'package:flutter_animations/scroll/listview_scrolling.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme:
           ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue)),
       debugShowCheckedModeBanner: false,
-      home: const PageTransition(),
+      home: const BirdClockPendulum(),
     );
   }
 }
