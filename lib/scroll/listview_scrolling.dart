@@ -181,6 +181,9 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
     _singingAnimation =
         Tween<double>(begin: 0, end: pi / 12).animate(_animationController);
+    _animationController.addListener(() {
+      setState(() {});
+    });
   }
 
   @override
@@ -197,10 +200,14 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         title: const Text('Animated Singing Bird'),
         bottom: TabBar(
           controller: _tabController,
+          onTap: (index) {
+            _animationController.reset();
+            _animationController.forward();
+          },
           tabs: const [
-            CustomTab(text: 'Tab 1'),
-            CustomTab(text: 'Tab 2'),
-            CustomTab(text: 'Tab 3'),
+            CustomTab(text: ''),
+            CustomTab(text: ''),
+            CustomTab(text: ''),
           ],
           indicator: CustomTabIndicator(
             wingAnimation: _wingAnimation,
@@ -276,8 +283,9 @@ class _CustomTabIndicatorPainter extends BoxPainter {
 
     // Draw a singing bird on the tab indicator with animated wing and singing animation
     final Paint birdPaint = Paint()
-      ..color = Colors.red
+      ..color = Colors.black
       ..strokeWidth = 2
+      ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
 
     const double birdSize = 20.0;

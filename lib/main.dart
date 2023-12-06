@@ -5,11 +5,14 @@ import 'package:flutter_animations/animations/bird_clock.dart';
 import 'package:flutter_animations/animations/bird_clock_pendulum.dart';
 import 'package:flutter_animations/animations/fab_animation.dart';
 import 'package:flutter_animations/animations/page_transition.dart';
+import 'package:flutter_animations/animations/ticket_tear_animation.dart';
 import 'package:flutter_animations/custom_paint/apple.dart';
 import 'package:flutter_animations/custom_paint/clock_design.dart';
 import 'package:flutter_animations/custom_paint/custom_clock.dart';
 import 'package:flutter_animations/custom_paint/custom_slider.dart';
 import 'package:flutter_animations/custom_paint/doreamon.dart';
+import 'package:flutter_animations/custom_paint/flower.dart';
+import 'package:flutter_animations/custom_paint/progress_painting.dart';
 import 'package:flutter_animations/custom_paint/thermometer.dart';
 import 'package:flutter_animations/render_object/speedometer.dart';
 import 'package:flutter_animations/scroll/listview_scrolling.dart';
@@ -27,7 +30,7 @@ class MyApp extends StatelessWidget {
       theme:
           ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue)),
       debugShowCheckedModeBanner: false,
-      home: const DoreamonDrawing(),
+      home: const BirdClockPendulum(),
     );
   }
 }
