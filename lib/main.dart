@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animations/animations/ball_animation.dart';
 import 'package:flutter_animations/animations/bird_clock.dart';
 import 'package:flutter_animations/animations/bird_clock_pendulum.dart';
+import 'package:flutter_animations/animations/delayed_animation.dart';
+import 'package:flutter_animations/animations/expansion_animation.dart';
 import 'package:flutter_animations/animations/fab_animation.dart';
+import 'package:flutter_animations/animations/folding_animation.dart';
+import 'package:flutter_animations/animations/jump_animation.dart';
 import 'package:flutter_animations/animations/page_transition.dart';
 import 'package:flutter_animations/animations/ticket_tear_animation.dart';
 import 'package:flutter_animations/custom_paint/apple.dart';
@@ -31,7 +35,7 @@ class MyApp extends StatelessWidget {
       theme:
           ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue)),
       debugShowCheckedModeBanner: false,
-      home: const DrawFlower(),
+      home: const DelayedAnimation(),
     );
   }
 }
