@@ -19,8 +19,11 @@ import 'package:flutter_animations/custom_paint/flower.dart';
 import 'package:flutter_animations/custom_paint/flower_drawing.dart';
 import 'package:flutter_animations/custom_paint/progress_painting.dart';
 import 'package:flutter_animations/custom_paint/thermometer.dart';
+import 'package:flutter_animations/loading_animations/dots_loading.dart';
 import 'package:flutter_animations/render_object/speedometer.dart';
 import 'package:flutter_animations/scroll/listview_scrolling.dart';
+
+import 'custom_paint/frog_design.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,7 +38,7 @@ class MyApp extends StatelessWidget {
       theme:
           ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue)),
       debugShowCheckedModeBanner: false,
-      home: const DelayedAnimation(),
+      home: const DotsLoading(),
     );
   }
 }
