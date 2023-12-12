@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animations/animations/round_slider.dart';
-import 'package:flutter_animations/animations/typing_animation.dart';
+import 'package:flutter_animations/animations/text_animation/typing_animation.dart';
+import 'package:flutter_animations/animations/text_animation/wave_animation.dart';
 import 'package:flutter_animations/custom_paint/cat.dart';
 import 'package:flutter_animations/custom_paint/dash_design.dart';
 import 'package:flutter_animations/custom_paint/frog_head.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
                 colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue)),
             debugShowCheckedModeBanner: false,
-            home: const TypingAnimation(),
+            home: const TextWaveAnimation(),
           ),
         ));
   }
