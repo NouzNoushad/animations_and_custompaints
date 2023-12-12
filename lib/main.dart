@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animations/animations/round_slider.dart';
+import 'package:flutter_animations/animations/typing_animation.dart';
 import 'package:flutter_animations/custom_paint/cat.dart';
 import 'package:flutter_animations/custom_paint/dash_design.dart';
 import 'package:flutter_animations/custom_paint/frog_head.dart';
 import 'package:flutter_animations/custom_paint/pikachu.dart';
+import 'package:flutter_animations/state_management/example/color_nobot.dart';
+import 'package:flutter_animations/state_management/example/counter_nobot.dart';
+import 'package:flutter_animations/state_management/example/counter_view.dart';
+import 'package:flutter_animations/state_management/nobot_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'animations/zoom_drawer/provider/page_provider.dart';
@@ -18,14 +23,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (context) => PageProvider())],
-      child: MaterialApp(
-        theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue)),
-        debugShowCheckedModeBanner: false,
-        home: const CatDrawing(),
-      ),
-    );
+    return NobotProvider<CounterNobot, int>(
+        create: (_) => CounterNobot(),
+        child: NobotProvider<ColorNobot, Color>(
+          create: (_) => ColorNobot(),
+          child: MaterialApp(
+            theme: ThemeData(
+                colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue)),
+            debugShowCheckedModeBanner: false,
+            home: const TypingAnimation(),
+          ),
+        ));
   }
 }
