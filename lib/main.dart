@@ -8,6 +8,7 @@ import 'package:flutter_animations/clippers/tickets.dart';
 import 'package:flutter_animations/custom_paint/cat.dart';
 import 'package:flutter_animations/custom_paint/dash_design.dart';
 import 'package:flutter_animations/custom_paint/frog_head.dart';
+import 'package:flutter_animations/custom_paint/phone_pattern.dart';
 import 'package:flutter_animations/custom_paint/pikachu.dart';
 import 'package:flutter_animations/state_management/example/color_nobot.dart';
 import 'package:flutter_animations/state_management/example/counter_nobot.dart';
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
                 colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue)),
             debugShowCheckedModeBanner: false,
-            home: const SwitchLock(),
+            home: const PhoneLockPattern(),
           ),
         ));
   }
