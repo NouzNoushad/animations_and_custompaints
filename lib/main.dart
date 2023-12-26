@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animations/animations/brick_animation.dart';
+import 'package:flutter_animations/animations/leaf_ui/leaf_details.dart';
 import 'package:flutter_animations/animations/round_slider.dart';
 import 'package:flutter_animations/animations/switch_lock.dart';
 import 'package:flutter_animations/animations/text_animation/typing_animation.dart';
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
                 colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue)),
             debugShowCheckedModeBanner: false,
-            home: const ChameleonDesign(),
+            home: const LeafDetailsScreen(),
           ),
         ));
   }
