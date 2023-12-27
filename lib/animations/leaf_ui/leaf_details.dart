@@ -9,6 +9,7 @@ class LeafDetailsScreen extends StatefulWidget {
 
 class _LeafDetailsScreenState extends State<LeafDetailsScreen> {
   List<String> plants = ['leaf1', 'leaf2', 'leaf3', 'leaf4', 'leaf5'];
+  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,11 +78,26 @@ class _LeafDetailsScreenState extends State<LeafDetailsScreen> {
                             ),
                         itemBuilder: (context, index) {
                           var plant = plants[index];
-                          return CustomPaint(
-                            painter: EdgeCut(),
-                            child: Image.asset(
-                              'assets/$plant.jpg',
-                              height: 95,
+                          return GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedIndex = index;
+                              });
+                            },
+                            child: AnimatedContainer(
+                              duration: const Duration(milliseconds: 800),
+                              child: selectedIndex == index
+                                  ? CustomPaint(
+                                      painter: EdgeCut(),
+                                      child: Image.asset(
+                                        'assets/$plant.png',
+                                        height: 95,
+                                      ),
+                                    )
+                                  : Image.asset(
+                                      'assets/$plant.png',
+                                      height: 95,
+                                    ),
                             ),
                           );
                         }),
@@ -99,7 +115,7 @@ class _LeafDetailsScreenState extends State<LeafDetailsScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Image.asset(
-                              'assets/leaf1.jpg',
+                              'assets/leaf${selectedIndex + 1}.png',
                             ),
                             const SizedBox(
                               height: 20,
@@ -156,17 +172,22 @@ class EdgeCut extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     var h = size.height;
     var w = size.width;
-    var path = Path();
-    // ..lineTo(w * 0, h * -0.1)
-    // ..lineTo(w, h * -0.1)
-    // ..quadraticBezierTo(w * -0.1, h * 0.15, w * 0.0, h * 0.2);
+    var path = Path()
+      ..moveTo(w * 1.1, h * -0.25)
+      ..quadraticBezierTo(w * 1.1, h * -0.08, w * 1, h * -0.1)
+      ..lineTo(w * 0.08, h * -0.1)
+      ..quadraticBezierTo(w * -0.01, h * -0.05, w * 0.0, h * 0.05)
+      ..lineTo(w * 0.0, h * 0.95)
+      ..quadraticBezierTo(w * -0.01, h * 1.1, w * 0.08, h * 1.15)
+      ..lineTo(w * 1, h * 1.15)
+      ..quadraticBezierTo(w * 1.1, h * 1.15, w * 1.1, h * 1.25);
 
     canvas.drawPath(
         path,
         Paint()
-          ..color = Colors.black
-          ..strokeWidth = 4
-          ..style = PaintingStyle.stroke);
+          ..color = const Color.fromRGBO(86, 130, 92, 1)
+          ..strokeWidth = 3
+          ..style = PaintingStyle.fill);
   }
 
   @override
