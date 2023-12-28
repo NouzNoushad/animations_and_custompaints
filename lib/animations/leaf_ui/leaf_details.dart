@@ -173,14 +173,14 @@ class EdgeCut extends CustomPainter {
     var h = size.height;
     var w = size.width;
     var path = Path()
-      ..moveTo(w * 1.1, h * -0.25)
-      ..quadraticBezierTo(w * 1.1, h * -0.08, w * 1, h * -0.1)
+      ..moveTo(w * 1.15, h * -0.28)
+      ..quadraticBezierTo(w * 1.1, h * -0.09, w * 1, h * -0.1)
       ..lineTo(w * 0.08, h * -0.1)
       ..quadraticBezierTo(w * -0.01, h * -0.05, w * 0.0, h * 0.05)
       ..lineTo(w * 0.0, h * 0.95)
       ..quadraticBezierTo(w * -0.01, h * 1.1, w * 0.08, h * 1.15)
       ..lineTo(w * 1, h * 1.15)
-      ..quadraticBezierTo(w * 1.1, h * 1.15, w * 1.1, h * 1.25);
+      ..quadraticBezierTo(w * 1.1, h * 1.15, w * 1.15, h * 1.3);
 
     canvas.drawPath(
         path,

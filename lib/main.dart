@@ -13,6 +13,7 @@ import 'package:flutter_animations/custom_paint/frog_head.dart';
 import 'package:flutter_animations/custom_paint/phone_pattern.dart';
 import 'package:flutter_animations/custom_paint/pikachu.dart';
 import 'package:flutter_animations/loading_animations/spin_loading.dart';
+import 'package:flutter_animations/onboarding/onboarding.dart';
 import 'package:flutter_animations/state_management/example/color_nobot.dart';
 import 'package:flutter_animations/state_management/example/counter_nobot.dart';
 import 'package:flutter_animations/state_management/example/counter_view.dart';
