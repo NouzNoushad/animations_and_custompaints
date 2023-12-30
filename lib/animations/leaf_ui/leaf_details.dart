@@ -3,15 +3,22 @@ import 'package:flutter/material.dart';
 import 'constants.dart';
 
 class LeafDetailsScreen extends StatefulWidget {
-  const LeafDetailsScreen({super.key});
+  const LeafDetailsScreen({super.key, required this.selectedIndex});
+  final int selectedIndex;
 
   @override
   State<LeafDetailsScreen> createState() => _LeafDetailsScreenState();
 }
 
 class _LeafDetailsScreenState extends State<LeafDetailsScreen> {
-  
-  int selectedIndex = 0;
+  int selectedIndex = 2;
+
+  @override
+  void initState() {
+    selectedIndex = widget.selectedIndex;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,21 +26,26 @@ class _LeafDetailsScreenState extends State<LeafDetailsScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
                     children: [
-                      Icon(
-                        Icons.arrow_back_ios,
-                        color: Colors.white,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Icon(
+                          Icons.arrow_back_ios,
+                          color: Colors.white,
+                        ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
-                      Text(
+                      const Text(
                         'Back',
                         style: TextStyle(
                           color: Colors.white,
@@ -41,7 +53,7 @@ class _LeafDetailsScreenState extends State<LeafDetailsScreen> {
                       ),
                     ],
                   ),
-                  Row(
+                  const Row(
                     children: [
                       Icon(
                         Icons.search,

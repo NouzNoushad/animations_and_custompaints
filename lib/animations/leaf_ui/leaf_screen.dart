@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animations/animations/leaf_ui/constants.dart';
+import 'package:flutter_animations/animations/leaf_ui/leaf_details.dart';
 
 class LeafScreen extends StatefulWidget {
   const LeafScreen({super.key});
@@ -155,45 +156,138 @@ class _LeafScreenState extends State<LeafScreen> {
                           physics: const BouncingScrollPhysics(),
                           itemBuilder: (context, index) {
                             var plant = plants[index];
-                            return Stack(
-                              children: [
-                                Container(
-                                  height: 150,
-                                  margin: const EdgeInsets.only(left: 70),
-                                  decoration: const BoxDecoration(
-                                      color: Color.fromRGBO(86, 130, 92, 1),
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(20),
-                                        bottomLeft: Radius.circular(20),
-                                      )),
-                                  padding:
-                                      const EdgeInsets.fromLTRB(20, 10, 10, 10),
-                                  child: const Row(
-                                    children: [
-                                      Column(children: [
-                                        Text(
-                                          'Maku rela Vera',
-                                          style: TextStyle(
-                                            fontSize: 28,
-                                            fontWeight: FontWeight.bold,
-                                            color: Color.fromRGBO(
-                                                229, 220, 165, 1),
-                                            letterSpacing: 0.5,
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => LeafDetailsScreen(
+                                          selectedIndex: index,
+                                        )));
+                              },
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    height: 140,
+                                    margin: const EdgeInsets.only(left: 70),
+                                    decoration: const BoxDecoration(
+                                        color: Color.fromRGBO(86, 130, 92, 1),
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(20),
+                                          bottomLeft: Radius.circular(20),
+                                        )),
+                                    padding: const EdgeInsets.fromLTRB(
+                                        10, 15, 20, 15),
+                                    child: Row(
+                                      children: [
+                                        const SizedBox(width: 50),
+                                        Expanded(
+                                          child: Column(children: [
+                                            const Text(
+                                              'Maku rela Vera',
+                                              style: TextStyle(
+                                                fontSize: 24,
+                                                fontWeight: FontWeight.bold,
+                                                color: Color.fromRGBO(
+                                                    229, 220, 165, 1),
+                                                letterSpacing: 0.5,
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            Row(
+                                              children: [
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            6),
+                                                    border: Border.all(
+                                                        width: 1.5,
+                                                        color: Colors.white54),
+                                                  ),
+                                                  padding:
+                                                      const EdgeInsets.all(5),
+                                                  child: Image.asset(
+                                                    'assets/drop.png',
+                                                    width: 18,
+                                                    color: Colors.white54,
+                                                  ),
+                                                ),
+                                                const SizedBox(
+                                                  width: 10,
+                                                ),
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            6),
+                                                    border: Border.all(
+                                                        width: 1.5,
+                                                        color: Colors.white54),
+                                                  ),
+                                                  padding:
+                                                      const EdgeInsets.all(5),
+                                                  child: Image.asset(
+                                                    'assets/temperature.png',
+                                                    width: 18,
+                                                    color: Colors.white54,
+                                                  ),
+                                                ),
+                                                const SizedBox(
+                                                  width: 10,
+                                                ),
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            6),
+                                                    border: Border.all(
+                                                        width: 1.5,
+                                                        color: Colors.white54),
+                                                  ),
+                                                  padding:
+                                                      const EdgeInsets.all(5),
+                                                  child: Image.asset(
+                                                    'assets/sun.png',
+                                                    width: 18,
+                                                    color: Colors.white54,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ]),
+                                        ),
+                                        const SizedBox(
+                                          width: 25,
+                                        ),
+                                        Container(
+                                          height: 70,
+                                          width: 70,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            color: Colors.white,
+                                          ),
+                                          child: const Icon(
+                                            Icons.add,
+                                            size: 40,
+                                            color:
+                                                Color.fromRGBO(86, 130, 92, 1),
                                           ),
                                         ),
-                                      ]),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                Positioned(
-                                  top: 15,
-                                  left: 10,
-                                  child: Image.asset(
-                                    'assets/$plant.png',
-                                    height: 120,
+                                  Positioned(
+                                    top: 10,
+                                    left: 10,
+                                    child: Image.asset(
+                                      'assets/$plant.png',
+                                      height: 120,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             );
                           },
                           separatorBuilder: (context, index) {
