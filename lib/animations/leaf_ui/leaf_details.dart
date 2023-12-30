@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'constants.dart';
+
 class LeafDetailsScreen extends StatefulWidget {
   const LeafDetailsScreen({super.key});
 
@@ -8,7 +10,7 @@ class LeafDetailsScreen extends StatefulWidget {
 }
 
 class _LeafDetailsScreenState extends State<LeafDetailsScreen> {
-  List<String> plants = ['leaf1', 'leaf2', 'leaf3', 'leaf4', 'leaf5'];
+  
   int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {

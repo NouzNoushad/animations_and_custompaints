@@ -20,6 +20,7 @@ import 'package:flutter_animations/state_management/example/counter_view.dart';
 import 'package:flutter_animations/state_management/nobot_provider.dart';
 import 'package:provider/provider.dart';
 
+import 'animations/leaf_ui/leaf_screen.dart';
 import 'animations/zoom_drawer/provider/page_provider.dart';
 import 'animations/zoom_drawer/screens/drawer_animation.dart';
 
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
                 colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue)),
             debugShowCheckedModeBanner: false,
-            home: const LeafDetailsScreen(),
+            home: const LeafScreen(),
           ),
         ));
   }
